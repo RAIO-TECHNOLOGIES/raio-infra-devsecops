@@ -1,5 +1,6 @@
 # RAIO Infra DevSecOps Workflows
 
+
 This repository contains **centrally managed, reusable GitHub Actions workflows** for automated security scanning—covering both SAST (code/static analysis) and SCA (dependency vulnerability)—using [Gitleaks](https://github.com/gitleaks/gitleaks), [Semgrep](https://semgrep.dev/), and [OWASP Dependency-Check](https://owasp.org/www-project-dependency-check/). These workflows are designed for use across all RAIO-TECHNOLOGIES organization repositories, ensuring consistent and easy security enforcement with minimal setup.
 
 ## Contents
