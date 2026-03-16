@@ -16,6 +16,6 @@ jobs:
           rm gitleaks_8.18.2_linux_x64.tar.gz
       - name: Download central gitleaks.toml
         run: |
-          curl -L "https://raw.githubusercontent.com/RAIO-Dev/raio-infra-devsecops/main/gitleaks.toml" -o gitleaks.toml
+          curl -L "https://raw.githubusercontent.com/RAIO-TECHNOLOGIES/raio-infra-devsecops/main/gitleaks.toml" -o gitleaks.toml
       - name: Run Gitleaks
         run: gitleaks detect --source . --no-git --config gitleaks.toml -v
