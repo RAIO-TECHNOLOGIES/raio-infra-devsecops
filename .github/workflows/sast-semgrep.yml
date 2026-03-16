@@ -1,0 +1,13 @@
+name: sast-semgrep
+
+on:
+  workflow_call:
+
+jobs:
+  semgrep:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Semgrep OSS
+        run: |
+          docker run --rm -v "${PWD}:/src" semgrep/semgrep:latest-nonroot semgrep scan --config auto --error

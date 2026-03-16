@@ -1,0 +1,21 @@
+name: sast-gitleaks
+
+on:
+  workflow_call:
+
+jobs:
+  gitleaks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Download gitleaks binary
+        run: |
+          wget https://github.com/gitleaks/gitleaks/releases/download/v8.18.2/gitleaks_8.18.2_linux_x64.tar.gz
+          tar -xvzf gitleaks_8.18.2_linux_x64.tar.gz
+          sudo mv gitleaks /usr/local/bin/
+          rm gitleaks_8.18.2_linux_x64.tar.gz
+      - name: Download central gitleaks.toml
+        run: |
+          curl -L "https://raw.githubusercontent.com/RAIO-Dev/raio-infra-devsecops/main/gitleaks.toml" -o gitleaks.toml
+      - name: Run Gitleaks
+        run: gitleaks detect --source . --no-git --config gitleaks.toml -v
