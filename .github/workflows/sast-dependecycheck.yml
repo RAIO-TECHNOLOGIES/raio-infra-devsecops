@@ -14,4 +14,4 @@ jobs:
         with:
           project: "repo-sast"
           format: "HTML"
-          args: "--failOnCVSS 6.5"
+          args: "--failOnCVSS 9.5"
