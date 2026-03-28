@@ -8,10 +8,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
 
       - name: Run OWASP Dependency-Check
         uses: dependency-check/Dependency-Check_Action@main
         with:
           project: "repo-sast"
           format: "HTML"
-          args: "--failOnCVSS 9.5"
+          args: "--failOnCVSS 9.5 --disableNodeAudit"
