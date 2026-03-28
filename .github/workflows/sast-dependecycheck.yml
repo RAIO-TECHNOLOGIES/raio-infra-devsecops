@@ -16,6 +16,14 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+        
+      - name: Cache OWASP NVD database
+        uses: actions/cache@v4
+        with:
+          path: ~/.dependency-check/data
+          key: owasp-nvd-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            owasp-nvd-${{ runner.os }}-
 
       - name: Run OWASP Dependency-Check
         uses: dependency-check/Dependency-Check_Action@main
